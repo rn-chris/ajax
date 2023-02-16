@@ -1,0 +1,40 @@
+   public function remove_history(){
+        $data=Input::all();
+        $remove_id=$data['remove_id'];
+        DB::table('buy_history')
+            ->where('id',$remove_id)
+            ->delete();
+    }
+
+ $data=DB::table('products')
+                ->where('brand', $recommend_watch_brand)
+                ->where('type', $recommend_watch_type)
+                ->get();
+
+            return view('recommendation',compact('data'));
+
+
+
+ @for($i=0;$i<count($data);$i++)
+
+                <article class="s-12 m-12 l-3 margin-bottom-40" style="margin-top: 30px;text-align: -webkit-center;" >
+                    <a class="  "  style="text-align: -webkit-center;cursor:pointer;">
+                        <img src="{{asset($data[$i]->path)}}" alt="" style="width: 220px; border-radius: 20px; height:300px !important; ">
+                    </a><br>
+
+                    <header>
+                        <h4 class=" text-size-16 margin-bottom-15" style="text-align: center;">
+                            <a class="text-primary-hover text-dark"> {{$data[$i]->description}} Watch </a><br><br>
+                            Quantity:{{$data[$i]->quantity}}<br>
+                            Price:{{$data[$i]->price}}
+                        </h4>
+                        <div style="width: 70%;margin: auto;">
+                            <button class="btn btn-outline-success add_cart" id = "{{$data[$i]->id}}">Add Cart</button>
+                            <a class="text-more-info text-primary margin-top-6" id = "go_buy" href="{{url('/cart')}}" style="float: right;font-size: 16px;">Go Cart</a>
+                        </div>
+                    </header>
+                    <hr>
+                </article>
+            @endfor
+
+9）
